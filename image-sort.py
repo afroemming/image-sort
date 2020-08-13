@@ -7,7 +7,6 @@ from shutil import move
 def i_sort(w_path):
     print(w_path)
     files = map(lambda x: join(w_path, x), listdir(w_path))
-    directories = []
 
     for f in files:
         print(f)
@@ -21,7 +20,6 @@ def i_sort(w_path):
         im.close()
         if not isdir(c_dir):
             mkdir(c_dir)
-            directories.append(c_dir)
         move(f, c_dir)
 
 b_path = getcwd()
