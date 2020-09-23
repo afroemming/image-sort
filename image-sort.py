@@ -16,7 +16,7 @@ def i_sort(w_path):
             im = Image.open(f)
         except:
             continue
-        c_dir = join(b_path, str(im.width) + 'x' + str(im.width))
+        c_dir = join(b_path, str(im.width) + 'x' + str(im.height))
         im.close()
         if not isdir(c_dir):
             mkdir(c_dir)
