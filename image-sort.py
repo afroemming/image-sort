@@ -1,4 +1,4 @@
-import os, shutil
+import os, shutil, argparse
 
 from PIL import Image 
 
@@ -14,11 +14,17 @@ def i_sort(w_path):
             im = Image.open(f)
         except:
             continue
-        c_dir = os.path.join(b_path, str(im.width) + 'x' + str(im.height))
+        c_dir = os.path.join(args.path, str(im.width) + 'x' + str(im.height))
         im.close()
         if not os.path.isdir(c_dir):
             os.mkdir(c_dir)
-        shutil.move(f, c_dir)
+        try:
+            shutil.move(f, c_dir)
+        except:
+            pass
 
-b_path = os.getcwd()
-i_sort(b_path)
+parser = argparse.ArgumentParser(description="Sort images recursively into folders by resolutions")
+parser.add_argument('path', metavar='P', type=str, help='base path to sort below')
+args = parser.parse_args()
+
+i_sort(args.path)
